@@ -1,4 +1,5 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.inheritance;
+
 
 public class TextReport {
     public String generate(String name, String body) {
