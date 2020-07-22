@@ -1,4 +1,4 @@
-package ru.job4j.tracker.pojo.pojo;
+package ru.job4j.tracker.pojo;
 
 import ru.job4j.tracker.pojo.Student;
 
