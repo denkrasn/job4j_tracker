@@ -14,16 +14,8 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        Item[] namesWithoutNull = new Item[size];
-        int count = 0;
-        for (int index = 0; index < items.length; index++) {
-            Item item = items[index];
-            if (item != null) {
-                namesWithoutNull[count] = item;
-                count++;
-            }
-        }
-        return Arrays.copyOf(namesWithoutNull, count);
+
+        return Arrays.copyOf(items, size);
     }
 
     public Item findById(int id) {          /* проверяет в цикле все элементы массива items, сравнивая id с аргументом int id
@@ -40,16 +32,17 @@ public class Tracker {
         return rsl;
     }
 
-    public Item findByName(String key) {
-        Item rsm = null;
+    public Item[] findByName(String key) {
+        Item[] names = new Item[size];
+        int count = 0;
         for (int index = 0; index < size; index++) {
             Item item = items[index];
             if (item.getName() == key) {
-                rsm = item;
-                break;
+                names[count] = item;
+                count++;
             }
         }
-        return rsm;
+        return names;
     }
 
 }
