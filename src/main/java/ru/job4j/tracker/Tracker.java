@@ -42,7 +42,7 @@ public class Tracker {
                 count++;
             }
         }
-        return names;
+        return Arrays.copyOf(names, count);
     }
 
 }
