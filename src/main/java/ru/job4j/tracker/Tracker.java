@@ -18,18 +18,23 @@ public class Tracker {
         return Arrays.copyOf(items, size);
     }
 
-    public Item findById(int id) {          /* проверяет в цикле все элементы массива items, сравнивая id с аргументом int id
-                                                        и возвращает найденный Item. Если Item не найден - возвращает null.*/
-        Item rsl = null;
+
+    private int indexOf(int id) {
+        int rsl = -1;
         for (int index = 0; index < size; index++) {
-            Item item = items[index];
-            if (item.getId() == id) {
-                rsl = item;
+            if (items[index].getId() == id) {
+                rsl = index;
                 break;
             }
         }
-
         return rsl;
+    }
+
+    public Item findById(int id) {
+        /* Находим индекс */
+        int index = indexOf(id);
+        /* Если индекс найден возвращаем item, иначе null */
+        return index != -1 ? items[index] : null;
     }
 
     public Item[] findByName(String key) {
@@ -45,5 +50,18 @@ public class Tracker {
         return Arrays.copyOf(names, count);
     }
 
+    public boolean replace(int id, Item item) {
+        boolean rsl = false;
+        int index = indexOf(id);
+        if (index != -1) {
+            item.setId(id);
+            this.items[index] = item;
+            rsl = true;
+        }
+        return rsl;
+
+    }
 }
+
+
 
