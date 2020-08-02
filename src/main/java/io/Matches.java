@@ -15,15 +15,22 @@ public class Matches {
             count++;
             System.out.print(name + " Введите количество спичек: ");
             int select = Integer.valueOf(input.nextLine());
-            if (select >= 1 && select <= 3) {
-                sum = sum - select;
-                System.out.println("Спичек осталось: " + sum);
-
-
+            while (select < 1 || select > 3) {
+                System.out.println("Вы берете слишком много спичек, попробуйте еще раз.");
+                select = Integer.valueOf(input.nextLine());
             }
+            sum = sum - select;
+            System.out.println("Осталось спичек: " + sum);
 
         }
+        if (count % 2 != 0) {
+            System.out.println("ПОЗДРАВЛЯЕМ! Победил Игрок №2.");
+        } else {
+            System.out.println("ПОЗДРАВЛЯЕМ! Победил Игрок №1.");
+        }
 
-        System.out.println("Победитель!");
     }
+
+
 }
+
