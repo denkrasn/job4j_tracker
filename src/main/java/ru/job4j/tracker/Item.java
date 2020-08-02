@@ -4,6 +4,10 @@ public class Item {       //Класс Item описывает модель за
     private int id;         //уникальный номер заявления
     private String name;  //название заявления
 
+    public Item(String name) {
+
+    }
+
 
     public int getId() {
         return id;
