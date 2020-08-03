@@ -1,11 +1,11 @@
 package ru.job4j.tracker;
 
-public class Item {       //Класс Item описывает модель заявления.
-    private int id;         //уникальный номер заявления
-    private String name;  //название заявления
+public class Item {
+    private int id;
+    private String name;
 
     public Item(String name) {
-
+        this.name = name;
     }
 
 
@@ -23,5 +23,13 @@ public class Item {       //Класс Item описывает модель за
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
