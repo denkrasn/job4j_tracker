@@ -44,7 +44,7 @@ public class StartUI {
         System.out.println("=== Find item by Id ===");
 
         int id = input.askInt("Enter id: ");
-        ;
+
         Item item = tracker.findById(id);
         if (item != null) {
             System.out.println(item.toString());
@@ -61,26 +61,13 @@ public class StartUI {
         }
     }
 
-    public void init(Input input, Tracker tracker) {
+    public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
             this.showMenu();
-            int select = input.askInt("Select:");
-            if (select == 0) {
-                StartUI.createItem(input, tracker);
-            } else if (select == 1) {
-                StartUI.showAllItem(input, tracker);
-            } else if (select == 2) {
-                StartUI.replaceItem(input, tracker);
-            } else if (select == 3) {
-                StartUI.deleteItem(input, tracker);
-            } else if (select == 4) {
-                StartUI.FindItemById(input, tracker);
-            } else if (select == 5) {
-                StartUI.findItemsByName(input, tracker);
-            } else if (select == 6) {
-                run = false;
-            }
+            int select = input.askInt("Select: ");
+            UserAction action = actions[select];
+            run = action.execute(input, tracker);
         }
     }
 
@@ -101,6 +88,15 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(input, tracker);
+        UserAction[] actions = {
+                new CreateAction(),
+                new ShowAllAction(),
+                new DeleteAction(),
+                new FindByIdAction(),
+                new FindByNameAction(),
+                new ExitMenuAction()
+
+        };
+        new StartUI().init(input, tracker, actions);
     }
 }
