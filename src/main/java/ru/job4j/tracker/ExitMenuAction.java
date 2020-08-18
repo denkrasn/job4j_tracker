@@ -1,9 +1,14 @@
 package ru.job4j.tracker;
 
 public class ExitMenuAction implements UserAction {
+    private final Output out;
+
+    public ExitMenuAction(Output out) {
+        this.out = out;
+    }
     @Override
     public String name() {
-        return "=== Exit Program ===";
+        return "Exit Program";
     }
 
     @Override
