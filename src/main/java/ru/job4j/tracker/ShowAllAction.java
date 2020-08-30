@@ -15,7 +15,7 @@ public class ShowAllAction implements UserAction {
     public boolean execute(Input input, Tracker tracker) {
         Item[] ss = tracker.findAll();
         for (int index = 0; index < ss.length; index++) {
-            System.out.println(ss[index]);
+            out.println(ss[index]);
         }
         return true;
     }

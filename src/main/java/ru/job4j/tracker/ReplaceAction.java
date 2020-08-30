@@ -18,9 +18,9 @@ public class ReplaceAction implements UserAction {
         Item item = new Item(name);
         item.setId(id);
         if (tracker.replace(id, item)) {
-            System.out.println("=== Item was replaced ===");
+            out.println("=== Item was replaced ===");
         } else {
-            System.out.println("=== Item was not found ===");
+            out.println("=== Item was not found ===");
         }
         return true;
     }
